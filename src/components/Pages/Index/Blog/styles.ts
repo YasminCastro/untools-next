@@ -5,8 +5,8 @@ export const BlogWrapper = styled.section`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 24px;
-  margin: -250px auto 100px;
+  gap: 20px;
+  margin: -50px auto 100px;
   padding: 0 16px 24px;
   max-width: 1000px;
 `;
@@ -18,9 +18,14 @@ export const PostWrapper = styled.div`
   box-shadow: 0 3px 8px rgb(0 0 0 / 12%);
   max-width: 250px;
   min-width: 200px;
+  min-height: 325px;
   opacity: 0.95;
   padding: 24px;
   transition-duration: 0.2s;
+
+  :hover {
+    box-shadow: 0 3px 8px rgb(0 0 0 / 50%);
+  }
 `;
 
 export const Post = styled.div`
@@ -45,7 +50,7 @@ export const Post = styled.div`
   }
 
   h2 {
-    font-size: 24px;
+    font-size: 28px;
     font-weight: 900;
     margin-block-end: 18px;
     margin-block-start: 20px;

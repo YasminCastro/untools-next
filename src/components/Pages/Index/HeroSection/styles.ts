@@ -4,9 +4,10 @@ import { colors } from "../../../../styles/GlobalStyles";
 export const HeroSectionWrapper = styled.div`
   background: ${colors.transparentGrey};
 
-  padding-bottom: 300px;
+  padding-bottom: 100px;
   padding-top: 1px;
   text-align: center;
+  border-bottom: 0.2rem solid ${colors.transparentGrey};
 
   h1 {
     font-weight: 900;
