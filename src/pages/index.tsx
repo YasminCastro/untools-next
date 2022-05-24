@@ -7,7 +7,7 @@ import Blog from "../components/Pages/Index/Blog";
 import HeroSection from "../components/Pages/Index/HeroSection";
 import styles from "../styles/Home.module.css";
 import DirectusInstance from "../utils/directus";
-import { IPropsHome } from "./api/HomePage/getProps";
+import { IPosts, IPropsHome } from "./api/HomePage/getProps";
 
 const Home: NextPage<IPropsHome> = ({ posts }) => {
   return (
@@ -22,14 +22,14 @@ const Home: NextPage<IPropsHome> = ({ posts }) => {
       <HeroSection />
       <Blog posts={posts} />
 
-      <footer className={styles.footer}>
+      <footer>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"
           rel="noopener noreferrer"
         >
           Powered by{" "}
-          <span className={styles.logo}>
+          <span>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
         </a>
@@ -41,13 +41,15 @@ const Home: NextPage<IPropsHome> = ({ posts }) => {
 export default Home;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const directus = await DirectusInstance.getInstance();
+  const directus = await DirectusInstance();
 
-  const posts: ManyItems<any> = await directus
-    .items("posts")
-    .readByQuery({ limit: -1 });
+  const posts: ManyItems<IPosts> = await directus
+    .items("untools_blog")
+    .readByQuery({
+      limit: -1,
+      filter: { status: { _eq: "published" } },
+      fields: ["id", "title", "category", "slug", "description", "icon"],
+    });
 
-  console.log(posts);
-
-  return { props: { posts: "" } };
+  return { props: { posts: posts.data } };
 };
