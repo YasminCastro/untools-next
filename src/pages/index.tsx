@@ -1,11 +1,15 @@
-import type { NextPage } from "next";
+import { ManyItems } from "@directus/sdk";
+import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import Header from "../components/Global/Header";
+import Blog from "../components/Pages/Index/Blog";
 import HeroSection from "../components/Pages/Index/HeroSection";
 import styles from "../styles/Home.module.css";
+import DirectusInstance from "../utils/directus";
+import { IPropsHome } from "./api/HomePage/getProps";
 
-const Home: NextPage = () => {
+const Home: NextPage<IPropsHome> = ({ posts }) => {
   return (
     <div>
       <Head>
@@ -16,6 +20,7 @@ const Home: NextPage = () => {
 
       <Header />
       <HeroSection />
+      <Blog posts={posts} />
 
       <footer className={styles.footer}>
         <a
@@ -34,3 +39,15 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export const getStaticProps: GetStaticProps = async () => {
+  const directus = await DirectusInstance.getInstance();
+
+  const posts: ManyItems<any> = await directus
+    .items("posts")
+    .readByQuery({ limit: -1 });
+
+  console.log(posts);
+
+  return { props: { posts: "" } };
+};
