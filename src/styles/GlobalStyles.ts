@@ -9,4 +9,5 @@ export const colors = {
   transparentPurple: "#f5edfc",
   transparentBlue: "#e9f1f6",
   transparentGreen: "#e6f2eb",
+  creamWhite: "#fefdfb",
 };

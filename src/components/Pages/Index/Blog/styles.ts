@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { colors } from "../../../../styles/GlobalStyles";
 
-export const BlogWrapper = styled.section`
+export const BlogContainer = styled.section`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

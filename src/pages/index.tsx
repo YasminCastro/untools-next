@@ -5,7 +5,7 @@ import Image from "next/image";
 import Header from "../components/Global/Header";
 import Blog from "../components/Pages/Index/Blog";
 import HeroSection from "../components/Pages/Index/HeroSection";
-import styles from "../styles/Home.module.css";
+import { Wrapper } from "../styles";
 import DirectusInstance from "../utils/directus";
 import { IPosts, IPropsHome } from "./api/HomePage/getProps";
 
@@ -19,8 +19,10 @@ const Home: NextPage<IPropsHome> = ({ posts }) => {
       </Head>
 
       <Header />
-      <HeroSection />
-      <Blog posts={posts} />
+      <Wrapper>
+        <HeroSection />
+        <Blog posts={posts} />
+      </Wrapper>
 
       <footer>
         <a
