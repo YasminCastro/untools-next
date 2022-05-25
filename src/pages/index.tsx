@@ -1,7 +1,7 @@
 import { ManyItems } from "@directus/sdk";
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
+import Footer from "../components/Global/Footer";
 import Header from "../components/Global/Header";
 import Blog from "../components/Pages/Index/Blog";
 import HeroSection from "../components/Pages/Index/HeroSection";
@@ -15,7 +15,6 @@ const Home: NextPage<IPropsHome> = ({ posts }) => {
       <Head>
         <title>Untools</title>
         <meta name="description" content="Copying ultools" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Header />
@@ -23,19 +22,7 @@ const Home: NextPage<IPropsHome> = ({ posts }) => {
         <HeroSection />
         <Blog posts={posts} />
       </Wrapper>
-
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{" "}
-          <span>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
+      <Footer />
     </div>
   );
 };

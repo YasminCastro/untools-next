@@ -10,4 +10,5 @@ export const colors = {
   transparentBlue: "#e9f1f6",
   transparentGreen: "#e6f2eb",
   creamWhite: "#fefdfb",
+  darkerOverlay: "#e6e7e7",
 };
